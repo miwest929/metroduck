@@ -17,3 +17,15 @@ pre {
   margin-top: 10px;
   height: 400px;
 }
+
+pre.fragment {
+  margin-top: 1px;
+  height: 100%;
+  position: relative;
+  white-space: pre-wrap;
+  overflow: visible;
+}
+
+.isSelected {
+  background-color: #64FE2E;
+}

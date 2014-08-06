@@ -1,7 +1,26 @@
 class InstallationGuideController < ApplicationController
   def get
-    repo = Github::Repo.new( params[:repo] )
+    repo_name = params[:repo]
+    old_branch = params[:old_branch]
+    new_branch = params[:new_branch]
 
-    render json: {contents: repo.file('docs/installation_guide.md', params[:branch])}
+    repo = Github::Repo.new(repo_name)
+    old_guide = repo.file('docs/installation_guide.md', old_branch)
+    new_guide = repo.file('docs/installation_guide.md', new_branch)
+
+    if old_guide && new_guide
+      old_guide = old_guide.encode('utf-8', :invalid => :replace, :undef => :replace, :replace => '_')
+      new_guide = new_guide.encode('utf-8', :invalid => :replace, :undef => :replace, :replace => '_')
+      File.open("tmp/old_guide.md", 'w') {|f| f.write(old_guide) }
+      File.open("tmp/new_guide.md", 'w') {|f| f.write(new_guide) }
+
+      differ = %x(diff -a -b tmp/old_guide.md tmp/new_guide.md)
+
+      render json: {contents: differ}
+    elsif old_guide.nil?
+      render status: 422, json: {error: "No installation guide was found on the currently deployed branch."}
+    else
+      render status: 422, json: {error: "No installation guide was found on the new branch."}
+    end
   end
 end

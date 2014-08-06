@@ -13,6 +13,12 @@
     <input type="text" class="form-control" name="repo" ng-model="repo.new_branch"></input>
   </div>
     <button type="submit" class="btn btn-primary" ng-click="computeDeployGuide()">Get Deploy Guide</button>
+    <button type="submit" class="btn btn-primary" ng-click="generateDeployGuide()" ng-disabled="!inConstructState()">Generate Deploy Guide</button>
 </div>
 </form>
-<pre class="prettyprint prettyprinted" class="input-xlarge" ng-bind="repo.old_installation_guide"></pre>
+<div ng-show="!in_construct_state">
+  <pre class="prettyprint prettyprinted" class="input-xlarge" ng-bind="deployGuide"></pre>
+</div>
+<div id='fragments' ng-show="in_construct_state">
+  <pre class='fragment prettyprint prettyprinted' ng-click="selectFragment(fragment)" ng-repeat="fragment in fragments" ng-class="{'isSelected': fragment.isSelected}">{{fragment.content}}</pre>
+</div>
