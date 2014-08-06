@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.0.4'
 gem 'pg'
+gem 'bootstrap-sass'
 gem 'sass-rails', '~> 4.0.2'
 gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails'

@@ -1,0 +1,18 @@
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+<form>
+  <div class="form-group">
+    <label>Repo</label>
+    <input type="text" class="form-control" name="repo" ng-model="repo.name"></input>
+  </div>
+  <div class="form-group">
+    <label>Currently Deployed Branch</label>
+    <input type="text" class="form-control" name="repo" ng-model="repo.old_branch"></input>
+  </div>
+  <div class="form-group">
+    <label>New Branch</label>
+    <input type="text" class="form-control" name="repo" ng-model="repo.new_branch"></input>
+  </div>
+    <button type="submit" class="btn btn-primary" ng-click="computeDeployGuide()">Get Deploy Guide</button>
+</div>
+</form>
+<pre class="prettyprint prettyprinted" class="input-xlarge" ng-bind="repo.old_installation_guide"></pre>
