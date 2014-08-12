@@ -84,7 +84,7 @@ deploy_guides.controller('HomeCtrl', ['$scope', 'deployGuideService', function($
 
   $scope.computeDeployGuide = function() {
     console.log("Extracting deploy guide for repo: " + $scope.repo.name);
-    Guide.getInstallationGuide($scope.repo.name, $scope.repo.old_branch, $scope.repo.new_branch, function(data, status) {
+    Guide.getInstallationGuide($scope.repo.name, $scope.repo.old_branch, $scope.repo.new_branch, $scope.repo.old_path, $scope.repo.new_path, function(data, status) {
       $scope.in_construct_state = false;
       if (status === 422) {
         $scope.deployGuide = data.error;

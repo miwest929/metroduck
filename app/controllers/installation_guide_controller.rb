@@ -3,10 +3,12 @@ class InstallationGuideController < ApplicationController
     repo_name = params[:repo]
     old_branch = params[:old_branch]
     new_branch = params[:new_branch]
+    old_path = params[:old_path]
+    new_path = params[:new_path]
 
     repo = Github::Repo.new(repo_name)
-    old_guide = repo.file('docs/installation_guide.md', old_branch)
-    new_guide = repo.file('docs/installation_guide.md', new_branch)
+    old_guide = repo.file(old_path, old_branch)
+    new_guide = repo.file(new_path, new_branch)
 
     if old_guide && new_guide
       old_guide = old_guide.encode('utf-8', :invalid => :replace, :undef => :replace, :replace => '_')

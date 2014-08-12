@@ -6,11 +6,13 @@
   </div>
   <div class="form-group">
     <label>Currently Deployed Branch</label>
-    <input type="text" class="form-control" name="repo" ng-model="repo.old_branch"></input>
+    <input type="text" class="form-control" name="repo" ng-model="repo.old_branch" ng-init="repo.old_branch='Enter repo here...'"></input>
+    <input type="text" class="form-control" name="path" ng-model="repo.old_path" ng-init="repo.old_path='Enter file path here...'"></input>
   </div>
   <div class="form-group">
     <label>New Branch</label>
-    <input type="text" class="form-control" name="repo" ng-model="repo.new_branch"></input>
+    <input type="text" class="form-control" name="repo" ng-model="repo.new_branch" ng-init="repo.new_branch='Enter repo here...'"></input>
+    <input type="text" class="form-control" name="path" ng-model="repo.new_path" ng-init="repo.new_path='Enter file path here...'"></input>
   </div>
     <button type="submit" class="btn btn-primary" ng-click="computeDeployGuide()">Get Deploy Guide</button>
     <button type="submit" class="btn btn-primary" ng-click="generateDeployGuide()" ng-disabled="!inConstructState()">Generate Deploy Guide</button>
