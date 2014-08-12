@@ -17,7 +17,6 @@
 //= require ./lib/angular-route
 //= require ./lib/angular-resource
 //= require ./lib/angular-sanitize
-//= require ./lib/jquery.jeditable
 //= require main
 //= require_tree ./angular/controllers
 //= require_tree ./angular/services
