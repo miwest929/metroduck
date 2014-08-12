@@ -13,9 +13,8 @@
  *= require_tree .
  */
 
-pre {
+div.guide-container {
   margin-top: 10px;
-  height: 400px;
 }
 
 pre.fragment {
@@ -24,6 +23,27 @@ pre.fragment {
   position: relative;
   white-space: pre-wrap;
   overflow: visible;
+}
+
+pre.fragment-old {
+  margin-top: 1px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  height: 100%;
+  position: relative;
+  white-space: pre-wrap;
+  overflow: visible;
+  background-color: #F78181;
+}
+
+pre.frament-new {
+  margin-top: 0px;
+  height: 100%;
+  position: relative;
+  white-space: pre-wrap;
+  overflow: visible;
+  background-color: #9FF781;
 }
 
 .isSelected {

@@ -16,9 +16,12 @@
     <button type="submit" class="btn btn-primary" ng-click="generateDeployGuide()" ng-disabled="!inConstructState()">Generate Deploy Guide</button>
 </div>
 </form>
-<div ng-show="!in_construct_state">
-  <pre class="prettyprint prettyprinted" class="input-xlarge" ng-bind="deployGuide"></pre>
+<div ng-show="!in_construct_state && deployGuide !== null" class='guide-container'>
+  <pre class="prettyprint prettyprinted" class="input-xlarge" ng-bind="deployGuide" contenteditable="true"></pre>
 </div>
-<div id='fragments' ng-show="in_construct_state">
-  <pre class='fragment prettyprint prettyprinted' ng-click="selectFragment(fragment)" ng-repeat="fragment in fragments" ng-class="{'isSelected': fragment.isSelected}">{{fragment.content}}</pre>
+<div id='fragments' ng-show="in_construct_state" class='guide-container'>
+  <div ng-repeat="fragment in fragments" ng-click="selectFragment(fragment)">
+    <pre class='prettyprint prettyprinted fragment-old' ng-class="{'isSelected': fragment.isSelected}" ng-hide="fragment.old_changes === ''">{{fragment.old_changes}}</pre>
+    <pre class='prettyprint prettyprinted fragment-new' ng-class="{'isSelected': fragment.isSelected}">{{fragment.new_changes}}</pre>
+  </div>
 </div>
